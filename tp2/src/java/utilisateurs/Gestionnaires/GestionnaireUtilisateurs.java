@@ -63,6 +63,9 @@ public class GestionnaireUtilisateurs {
          return q.getResultList(); 
           
      }
+     public void modifUtilisateur(){
+         
+     }
   
     public Collection<Utilisateur> getAllUsers() {  
         // Exécution d'une requête équivalente à un select *  
