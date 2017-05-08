@@ -63,9 +63,14 @@ public class GestionnaireUtilisateurs {
          return q.getResultList(); 
           
      }
-     public void modifUtilisateur(){
-         
-     }
+    public void modifUtilisateur(String nom, String prenom, String login){
+         //for(Utilisateur ut : getAllUsers()){
+           //if(ut.getLastname().equalsIgnoreCase(nom) || ut.getFirstname().equalsIgnoreCase(prenom) || ut.getLogin().equalsIgnoreCase(login)){
+            Query q= em.createQuery("update  Utilisateur ut"
+                    +" set ut.getLastname()=nom,ut.getFirstname()=prenom,ut.getLogin()=login where"
+                    +"ut.getLasrname()=nom OR ut.getFirstname=prenom OR ut.getLogin=login"); 
+            int numUpdates = q.executeUpdate();
+    }
   
     public Collection<Utilisateur> getAllUsers() {  
         // Exécution d'une requête équivalente à un select *  

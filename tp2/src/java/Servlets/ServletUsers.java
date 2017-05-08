@@ -75,6 +75,11 @@ public class ServletUsers extends HttpServlet {
                   message = "aucun utilisateur ne correspond à votre recherche"; 
                 }
             }
+            else if(action.equals("updateUtilisateur")){
+                gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"));
+                forwardTo = "pagejsp.jsp?";
+                message="utilisateur modifier";
+            }
             else {  
                 forwardTo = "pagejsp.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
