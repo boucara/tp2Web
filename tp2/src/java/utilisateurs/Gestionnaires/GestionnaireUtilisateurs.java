@@ -24,19 +24,49 @@ public class GestionnaireUtilisateurs {
     private EntityManager em;  
   
     public void creerUtilisateursDeTest() {  
-        creeUtilisateur("John", "Lennon", "jlennon");  
-        creeUtilisateur("Paul", "Mac Cartney", "pmc");  
-        creeUtilisateur("Ringo", "Starr", "rstarr");  
-        creeUtilisateur("Georges", "Harisson", "georgesH");  
+        creeUtilisateur("John", "Lennon", "jlennon", "test");
+        creeUtilisateur("Paul", "Mac Cartney", "pmc", "test");
+        creeUtilisateur("Ringo", "Starr", "rstarr", "test");
+        creeUtilisateur("Georges", "Harisson", "georgesH", "test");
+        creeUtilisateur("Rivera", "Garth", "RiveraGarth", "test");
+        creeUtilisateur("Joyce", "Amery", "JoyceAmery", "test");
+        creeUtilisateur("Saunders", "Micah", "SaundersMicah", "test");
+        creeUtilisateur("Mccarty", "Fritz", "MccartyFritz", "test");
+        creeUtilisateur("Blake", "Perry", "BlakePerry", "test");
+        creeUtilisateur("Jenkins", "Maxwell", "JenkinsMaxwell", "test");
+        creeUtilisateur("Burch", "Geoffrey", "BurchGeoffrey", "test");
+        creeUtilisateur("Roberson", "Lane", "RobersonLane", "test");
+        creeUtilisateur("Carey", "Baxter", "CareyBaxter", "test");
+        creeUtilisateur("Bishop", "Samson", "BishopSamson", "test");
+        creeUtilisateur("Carver", "Odysseus", "CarverOdysseus", "test");
+        creeUtilisateur("Daniel", "Blaze", "DanielBlaze", "test");
+        creeUtilisateur("Barlow", "Isaiah", "BarlowIsaiah", "test");
+        creeUtilisateur("Landry", "Raymond", "LandryRaymond", "test");
+        creeUtilisateur("Bruce", "Gray", "BruceGray", "test");
+        creeUtilisateur("Bryant", "Merrill", "BryantMerrill", "test");
+        creeUtilisateur("Little", "Grant", "LittleGrant", "test");
+        creeUtilisateur("Glass", "Judah", "GlassJudah", "test");
+        creeUtilisateur("Rodgers", "Bevis", "RodgersBevis", "test");
+        creeUtilisateur("Love", "Channing", "LoveChanning", "test");
+        creeUtilisateur("Walters", "Flynn", "WaltersFlynn", "test");
+        creeUtilisateur("Mitchell", "Gareth", "MitchellGareth", "test");
+        creeUtilisateur("Hale", "Ronan", "HaleRonan", "test");
+        creeUtilisateur("Griffith", "Cameron", "GriffithCameron", "test");
+        creeUtilisateur("Little", "Thomas", "LittleThomas", "test");
+        creeUtilisateur("Valenzuela", "Leroy", "ValenzuelaLeroy", "test");
+        creeUtilisateur("Glass", "Hakeem", "GlassHakeem", "test");
+        creeUtilisateur("Morales", "Keith", "MoralesKeith", "test");
+        creeUtilisateur("Bradford", "Mohammad", "BradfordMohammad", "test");
+        creeUtilisateur("Ellison", "Vaughan", "EllisonVaughan", "test");  
     }  
   
-    public Utilisateur creeUtilisateur(String nom, String prenom, String login) {  
-        Utilisateur u = new Utilisateur(nom, prenom, login);  
+    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String mdp) {  
+        Utilisateur u = new Utilisateur(nom, prenom, login, mdp);  
         em.persist(u);  
         return u;  
     } 
     public void ajouterUtilisateur(String nom, String prenom, String login){
-        Utilisateur u = creeUtilisateur(nom,  prenom,  login);
+        Utilisateur u = creeUtilisateur(nom,  prenom,  login, "test");
         //Collection<Utilisateur> listeUtilisateurs = getAllUsers();
         //listeUtilisateurs.add(u);
     }
@@ -77,6 +107,32 @@ public class GestionnaireUtilisateurs {
         Query q = em.createQuery("select u from Utilisateur u");  
         return q.getResultList();  
     }  
+    
+    public Collection<Utilisateur> getPaginatedUsers(int pagination) {
+        return getPaginatedUsers(pagination, 10);
+    }
+    
+    public Collection<Utilisateur> getPaginatedUsers(int pagination, int max) {
+        Query q = em.createQuery("select u from Utilisateur u ");
+        q.setFirstResult(pagination);
+        q.setMaxResults(max);
+        return q.getResultList();
+    }
+    
+    public int getNumberUsers() {
+        Query q = em.createQuery("select u from Utilisateur u ");
+        return q.getResultList().size();
+    }
+    
+    public Utilisateur getUser(String login, String mdp) {
+        Query q = em.createQuery("select u from Utilisateur u where u.mdp='"+mdp+"' and u.login='"+login+"'");
+        if(!q.getResultList().isEmpty()) {
+            return (Utilisateur)q.getResultList().get(0);
+        }
+        else {
+            return null;
+        }
+    }
     // Add business logic below. (Right-click in editor and choose  
     // "Insert Code > Add Business Method")  
 }  

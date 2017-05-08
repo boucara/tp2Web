@@ -1,18 +1,13 @@
-<%-- 
-    Document   : footer2
-    Created on : 8 mai 2017, 15:41:07
-    Author     : Aicha
---%>
+<div id="footer">  
+    <ul class="bottom">  
+        <li><a href="http://miage.unice.fr/">Miage HOME</a> |  
+        <li><a href="http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa/">Michel Buffa's intranet</a> |  
+        <li><a href="http://miageprojet2.unice.fr/Intranet_de_Michel_Buffa/">Web page of this TP</a>  
+    </ul>  
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-         <div class="about">Copyright (c) 2020-2020 IUP Miage Nice.</div>  
-        <h1>Hello World!</h1>
-    </body>
-</html>
+    <div class="about">Copyright (c) 2020-2020 IUP Miage Nice.</div>  
+
+    <div class="about">  
+        This project is the first step towards becoming a real Web Developer !   
+    </div>  
+</div>  

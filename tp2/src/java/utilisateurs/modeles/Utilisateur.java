@@ -24,6 +24,15 @@ public class Utilisateur implements Serializable {
     private String firstname;  
     private String lastname;  
     private String login;  
+    private String mdp;
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
 
     public String getLastname() {
         return lastname;
@@ -43,10 +52,11 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {  
     }  
   
-    public Utilisateur(final String lastname, final String firstname, final String login) {  
+    public Utilisateur(final String lastname, final String firstname, final String login, String mdp) {  
         this.login = login;  
         this.lastname = lastname;  
         this.firstname = firstname;  
+        this.mdp = mdp;
     }  
   
     public String getFirstname() {  
