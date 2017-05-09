@@ -277,4 +277,5 @@ and open the template in the editor.
         right: 0;
         height: auto;
         position: absolute;
+        padding-left: 10px;
     }

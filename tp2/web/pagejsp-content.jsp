@@ -14,20 +14,33 @@
             <div class="panel-heading">Menu de gestion des utilisateurs</div>
             <div class="panel-body">
                  <div class="list-group">
-                    <a href="ServletUsers?action=listerLesUtilisateurs&pagination=0" class="list-group-item active">Afficher les utilisateurs</a>
+                    <a href="ServletUsers?action=listerLesUtilisateurs&pagination=0" class="list-group-item">Afficher les utilisateurs</a>
                     <a href="ServletUsers?action=creerUtilisateursDeTest&pagination=0" class="list-group-item">Créer 34 utilisateurs de test</a>
-                    <a href="#" class="list-group-item" onclick="navigation('creerUtilisateur')">Créer un utilisateur</a>
-                    <a href="#" class="list-group-item" onclick="navigation('rechercheUtilisateurs')">rechercher des utilistaeurs</a>
-                    <a href="#" class="list-group-item" onclick="navigation('detailUtilisateur')">Afficher les détails d'un utilisateur</a>
-                    <a href="#" class="list-group-item" onclick="navigation('modifierUtilisateur')">Modifier les détails d'un utilisateur</a>
-                    <a href="#" class="list-group-item" onclick="navigation('supprimerUtilisateur')">Supprimer un utilisateur</a>
+                    <a href="ServletUsers?action=ajouterUtilisateur" class="list-group-item">Créer un utilisateur</a>
+                    <a href="ServletUsers?action=rechercheUtilisateurs" class="list-group-item">rechercher des utilistaeurs</a>
+                    <a href="ServletUsers?action=detailUtilisateur" class="list-group-item">Afficher les détails d'un utilisateur</a>
+                    <a href="ServletUsers?action=modifierUtilisateur" class="list-group-item">Modifier les détails d'un utilisateur</a>
+                    <a href="ServletUsers?action=supprimerUtilisateur" class="list-group-item">Supprimer un utilisateur</a>
                 </div>
             </div>
         </div>
             
         <div class="right">
+                        
+            <c:if test="${requestScope['user'] == null || param['action'] != 'ajouterUtilisateur'}">
+            <h2>Liste des fonctionnalités à implémenter dans la Servlet (note : après chaque action cette page sera  
+                rappelée par la servlet avec la liste des utilisateurs raffraichie et un message de confirmation</h2>
             
-            <div id="creer-utilisateur">
+                Connectez vous pour accéder à toutes les fonctionnalités
+            </c:if>
+                
+            
+            <!-- Message qui s'affiche lorsque la page est appelé avec un paramètre http message -->  
+            <c:if test="${!empty param['message']}">  
+                <h2>Reçu message : ${param.message}</h2>  
+            </c:if> 
+                
+            <c:if test="${param['action'] == 'ajouterUtilisateur'}">
                 <h3>Créer un utilisateur</h3>  
                 <form action="ServletUsers" method="get">  
                 Nom : <input type="text" name="nom"/><br>  
@@ -38,29 +51,11 @@
                 <input type="hidden" name="action" value="ajouterUtilisateur"/>  
                 <input type="submit" value="Créer l'utilisateur" name="submit" onclick="ajouterUtilisateur()"/>  
                 </form> 
-            </div>
-                        
-            <c:if test="${requestScope['user'] == null && param['action'] != 'ajouterUtilisateur'}">
-            <h2>Liste des fonctionnalités à implémenter dans la Servlet (note : après chaque action cette page sera  
-                rappelée par la servlet avec la liste des utilisateurs raffraichie et un message de confirmation</h2>
+            </c:if>  
+            <c:if test="${requestScope['user'] != null}">  
             
-                Connectez vous pour accéder à toutes les fonctionnalités
-            </c:if>
-        
-            <c:if test="${requestScope['user'] != null}">
-            <!-- Message qui s'affiche lorsque la page est appelé avec un paramètre http message -->  
-            <c:if test="${!empty param['message']}">  
-                <h2>Reçu message : ${param.message}</h2>  
-            </c:if> 
-            
-            <ul>  
-            <li><a href="ServletUsers?action=listerLesUtilisateurs&pagination=0">Afficher/raffraichir la liste de tous les utilisateurs</a></li>  
-            <p>  
-            </ul>  
-              
-            <ol>    
-            
-             <li>rechercher des utilistaeurs</li> 
+            <c:if test="${param['action'] == 'rechercheUtilisateurs'}">
+             <h3>rechercher des utilistaeurs</h3> 
              <form action="ServletUsers" method="get"> 
                  <input type="hidden" name="action" value="rechercherUtilisateur"/>  
                  Nom : <input type="text" name="nom"/><br>  
@@ -70,15 +65,19 @@
                 <input type="submit" value="rechercher l'utilisateur" name="submit" />  
 
               </form> 
-            <li>Afficher les détails d'un utilisateur</li>  
+            </c:if> 
+             
+            <c:if test="${param['action'] == 'detailUtilisateur'}"> 
+            <h3>Afficher les détails d'un utilisateur</h3>  
             <form action="ServletUsers" method="get">  
                 login : <input type="text" name="login"/><br>  
                 <input type="hidden" name="action" value="chercherParLogin"/>  
                 <input type="submit" value="Chercher" name="submit"/>  
-            </form>  
+            </form>
+            </c:if> 
   
-  
-            <li>Modifier les détails d'un utilisateur :</li>  
+            <c:if test="${param['action'] == 'modificationUtilisateur'}">
+            <h3>Modifier les détails d'un utilisateur :</h3>  
             <form action="ServletUsers" method="get">  
                 Login : <input type="text" name="login"/><br>  
                 MDP : <input type="password" name="mdp"/><br>
@@ -86,10 +85,11 @@
                 Prénom : <input type="text" name="prenom"/><br>  
                 <input type="hidden" name="action" value="updateUtilisateur"/>  
                 <input type="submit" value="Mettre à jour" name="submit"/>  
-            </form>  
-        </ol>  
+            </form>
+            </c:if> 
         
-         <li>Supprimer un utilisateur :</li>  
+            <c:if test="${param['action'] == 'supprimerUtilisateur'}">
+            <h3>Supprimer un utilisateur :</h3>  
             <form action="ServletUsers" method="get">  
                 Login : <input type="text" name="login"/><br>  
                 MDP : <input type="password" name="mdp"/><br>
@@ -97,11 +97,8 @@
                 Prénom : <input type="text" name="prenom"/><br>  
                 <input type="hidden" name="action" value="deleteUtilisateur"/>  
                 <input type="submit" value="supprimer" name="submit"/>  
-            </form>  
-        </ol>  
-        
-  
-        <!-- Fin du menu -->  
+            </form>
+            </c:if> 
   
         <!-- Zone qui affiche les utilisateurs si le paramètre action vaut listerComptes -->  
         <c:if test="${param['action'] == 'listerLesUtilisateurs'}" >  
@@ -136,7 +133,7 @@
                 <a href="ServletUsers?action=listerLesUtilisateurs&pagination=${i*10}">${i}</a>
             </c:forEach>
             </c:if>  
-            </c:if>
+        </c:if>
         </div>
             
         
