@@ -91,7 +91,8 @@ public class ServletUsers extends HttpServlet {
                 gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
                 forwardTo = "pagejsp.jsp?";
                 message="utilisateur modifier";
-            }else if (action.equals("seConnecter")) {
+            }
+            else if (action.equals("seConnecter")) {
                 String login = request.getParameter("login");
                 String mdp = request.getParameter("mdp");
                 Utilisateur user = gestionnaireUtilisateurs.getUser(login, mdp);
