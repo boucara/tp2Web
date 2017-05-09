@@ -104,6 +104,15 @@ public class GestionnaireUtilisateurs {
             int numUpdates = q.executeUpdate();
           
     }
+    public void delete (String nom, String prenom, String login, String mdp){
+        Query q= em.createQuery("delete from Utilisateur ut where ut.lastname= :nom  AND ut.firstname=:prenom  AND ut.login=:login  AND ut.mdp=:mdp  "); 
+            q.setParameter("nom", nom);
+            q.setParameter("prenom", prenom);
+            q.setParameter("login", login);
+            q.setParameter("mdp", mdp);
+            int numUpdates = q.executeUpdate();
+        
+    }
     
   
     public Collection<Utilisateur> getAllUsers() {  

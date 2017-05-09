@@ -92,6 +92,13 @@ public class ServletUsers extends HttpServlet {
                 forwardTo = "pagejsp.jsp?";
                 message="utilisateur modifier";
             }
+          else if(action.equals("deleteUtilisateur") && request.getSession().getAttribute("user") != null){
+                String mdp = request.getParameter("mdp");
+                gestionnaireUtilisateurs.delete(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
+                forwardTo = "pagejsp.jsp?";
+                message="utilisateur supprimer";
+            }
+                    
             else if (action.equals("seConnecter")) {
                 String login = request.getParameter("login");
                 String mdp = request.getParameter("mdp");
