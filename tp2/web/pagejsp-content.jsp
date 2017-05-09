@@ -15,9 +15,17 @@
         <c:if test="${!empty param['message']}">  
             <h2>Reçu message : ${param.message}</h2>  
         </c:if>  
+        <div class="panel panel-primary">
+            <div class="panel-heading">Menu de gestion des utilisateurs</div>
+            <div class="panel-body">
+                 <div class="list-group">
+                    <a href="#" class="list-group-item active">First item</a>
+                    <a href="#" class="list-group-item">Second item</a>
+                    <a href="#" class="list-group-item">Third item</a>
+                </div>
+            </div>
+        </div>
   
-  
-        <h2>Menu de gestion des utilisateurs</h2>  
         <ul>  
             <li><a href="ServletUsers?action=listerLesUtilisateurs&pagination=0">Afficher/raffraichir la liste de tous les utilisateurs</a></li>  
             <p>  

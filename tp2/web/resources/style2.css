@@ -246,5 +246,20 @@ and open the template in the editor.
     }
     
     body {
-        background-image: url("resources/img.jpg");
+        background-image: url("img.jpg");
+        background-repeat: repeat-x;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    
+    h1 {
+        text-align: center;
+    }
+
+    .panel {
+        width: 20%;
+        background-color: rgba(0, 0, 255, 0.5);
     }
