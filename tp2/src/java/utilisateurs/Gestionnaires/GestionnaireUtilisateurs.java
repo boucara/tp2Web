@@ -95,12 +95,16 @@ public class GestionnaireUtilisateurs {
      }
     public void modifUtilisateur(String nom, String prenom, String login, String mdp){
          //for(Utilisateur ut : getAllUsers()){
-           //if(ut.getLastname().equalsIgnoreCase(nom) || ut.getFirstname().equalsIgnoreCase(prenom) || ut.getLogin().equalsIgnoreCase(login)){
-            Query q= em.createQuery("update  Utilisateur ut"
-                    +" set ut.getLastname()=nom,ut.getFirstname()=prenom,ut.getLogin()=login, ut.getMdp()=mdp where"
-                    +"ut.getLogin=login"); 
+         // if(ut.getLastname().equalsIgnoreCase(nom) || ut.getFirstname().equalsIgnoreCase(prenom) || ut.getLogin().equalsIgnoreCase(login)){
+            Query q= em.createQuery("update Utilisateur ut set ut.lastname= :nom  , ut.firstname=:prenom ,ut.login=:login  , ut.mdp=:mdp  where  ut.login=:login "); 
+            q.setParameter("nom", nom);
+            q.setParameter("prenom", prenom);
+            q.setParameter("login", login);
+            q.setParameter("mdp", mdp);
             int numUpdates = q.executeUpdate();
+          
     }
+    
   
     public Collection<Utilisateur> getAllUsers() {  
         // Exécution d'une requête équivalente à un select *  
