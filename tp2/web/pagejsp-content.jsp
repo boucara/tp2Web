@@ -65,6 +65,18 @@
                 <input type="submit" value="Mettre à jour" name="submit"/>  
             </form>  
         </ol>  
+        
+         <li>supprimer un utilisateur :</li>  
+            <form action="ServletUsers" method="get">  
+                Login : <input type="text" name="login"/><br>  
+                MDP : <input type="password" name="mdp"/><br>
+                Nom : <input type="text" name="nom"/><br>  
+                Prénom : <input type="text" name="prenom"/><br>  
+                <input type="hidden" name="action" value="deleteUtilisateur"/>  
+                <input type="submit" value="supprimer" name="submit"/>  
+            </form>  
+        </ol>  
+        
   
         <!-- Fin du menu -->  
   
