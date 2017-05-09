@@ -9,34 +9,27 @@
   
 <!-- Ne pas oublier cette ligne sinon tous les tags de la JSTL seront ignorés ! -->  
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
-  
-  
-        <!-- Message qui s'affiche lorsque la page est appelé avec un paramètre http message -->  
-        <c:if test="${!empty param['message']}">  
-            <h2>Reçu message : ${param.message}</h2>  
-        </c:if>  
+   
         <div class="panel panel-primary">
             <div class="panel-heading">Menu de gestion des utilisateurs</div>
             <div class="panel-body">
                  <div class="list-group">
-                    <a href="#" class="list-group-item active">First item</a>
-                    <a href="#" class="list-group-item">Second item</a>
-                    <a href="#" class="list-group-item">Third item</a>
+                    <a href="ServletUsers?action=listerLesUtilisateurs&pagination=0" class="list-group-item active">Afficher les utilisateurs</a>
+                    <a href="ServletUsers?action=creerUtilisateursDeTest&pagination=0" class="list-group-item">Créer 34 utilisateurs de test</a>
+                    <a href="#" class="list-group-item" onclick="navigation('creerUtilisateur')">Créer un utilisateur</a>
+                    <a href="#" class="list-group-item" onclick="navigation('rechercheUtilisateurs')">rechercher des utilistaeurs</a>
+                    <a href="#" class="list-group-item" onclick="navigation('detailUtilisateur')">Afficher les détails d'un utilisateur</a>
+                    <a href="#" class="list-group-item" onclick="navigation('modifierUtilisateur')">Modifier les détails d'un utilisateur</a>
+                    <a href="#" class="list-group-item" onclick="navigation('supprimerUtilisateur')">Supprimer un utilisateur</a>
                 </div>
             </div>
         </div>
-  
-        <ul>  
-            <li><a href="ServletUsers?action=listerLesUtilisateurs&pagination=0">Afficher/raffraichir la liste de tous les utilisateurs</a></li>  
-            <p>  
-        </ul>  
-            <h2>Liste des fonctionnalités à implémenter dans la Servlet (note : après chaque action cette page sera  
-                rappelée par la servlet avec la liste des utilisateurs raffraichie et un message de confirmation</h2>  
-        <ol>  
-            <li><a href="ServletUsers?action=creerUtilisateursDeTest&pagination=0">Créer 34 utilisateurs de test</a></li>  
-  
-            <li>Créer un utilisateur</li>  
-            <form action="ServletUsers" method="get">  
+            
+        <div class="right">
+            
+            <div id="creer-utilisateur">
+                <h3>Créer un utilisateur</h3>  
+                <form action="ServletUsers" method="get">  
                 Nom : <input type="text" name="nom"/><br>  
                 Prénom : <input type="text" name="prenom"/><br>  
                 Login : <input type="text" name="login"/><br>  
@@ -44,7 +37,29 @@
                 <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
                 <input type="hidden" name="action" value="ajouterUtilisateur"/>  
                 <input type="submit" value="Créer l'utilisateur" name="submit" onclick="ajouterUtilisateur()"/>  
-            </form> 
+                </form> 
+            </div>
+                        
+            <c:if test="${requestScope['user'] == null && param['action'] != 'ajouterUtilisateur'}">
+            <h2>Liste des fonctionnalités à implémenter dans la Servlet (note : après chaque action cette page sera  
+                rappelée par la servlet avec la liste des utilisateurs raffraichie et un message de confirmation</h2>
+            
+                Connectez vous pour accéder à toutes les fonctionnalités
+            </c:if>
+        
+            <c:if test="${requestScope['user'] != null}">
+            <!-- Message qui s'affiche lorsque la page est appelé avec un paramètre http message -->  
+            <c:if test="${!empty param['message']}">  
+                <h2>Reçu message : ${param.message}</h2>  
+            </c:if> 
+            
+            <ul>  
+            <li><a href="ServletUsers?action=listerLesUtilisateurs&pagination=0">Afficher/raffraichir la liste de tous les utilisateurs</a></li>  
+            <p>  
+            </ul>  
+              
+            <ol>    
+            
              <li>rechercher des utilistaeurs</li> 
              <form action="ServletUsers" method="get"> 
                  <input type="hidden" name="action" value="rechercherUtilisateur"/>  
@@ -74,7 +89,7 @@
             </form>  
         </ol>  
         
-         <li>supprimer un utilisateur :</li>  
+         <li>Supprimer un utilisateur :</li>  
             <form action="ServletUsers" method="get">  
                 Login : <input type="text" name="login"/><br>  
                 MDP : <input type="password" name="mdp"/><br>
@@ -119,5 +134,11 @@
             </table>  
             <c:forEach var="i" begin="0" end="${requestScope['nombreUsers']/10}">
                 <a href="ServletUsers?action=listerLesUtilisateurs&pagination=${i*10}">${i}</a>
-             </c:forEach>
-        </c:if>  
+            </c:forEach>
+            </c:if>  
+            </c:if>
+        </div>
+            
+        
+  
+        

@@ -89,13 +89,13 @@ public class ServletUsers extends HttpServlet {
             else if(action.equals("updateUtilisateur") && request.getSession().getAttribute("user") != null){
                 String mdp = request.getParameter("mdp");
                 gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
-                forwardTo = "pagejsp.jsp?";
+                forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";
                 message="utilisateur modifier";
             }
           else if(action.equals("deleteUtilisateur") && request.getSession().getAttribute("user") != null){
                 String mdp = request.getParameter("mdp");
                 gestionnaireUtilisateurs.delete(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
-                forwardTo = "pagejsp.jsp?";
+                forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";
                 message="utilisateur supprimer";
             }
                     

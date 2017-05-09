@@ -190,10 +190,16 @@ and open the template in the editor.
     /* from caucho.com */  
     #footer hr {  
         width: 100%;  
+        
     }  
     #footer {  
         font-size: 80%;  
-        text-align: right;  
+        text-align: right; 
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: fixed;
+        height: 15%;
     }  
        
     /* bottom nav */  
@@ -261,5 +267,14 @@ and open the template in the editor.
 
     .panel {
         width: 20%;
-        background-color: rgba(0, 0, 255, 0.5);
+        height: 70%;
+        position: fixed;
+        left:0;
+    }
+    
+    .right {
+        width: 80%;
+        right: 0;
+        height: auto;
+        position: absolute;
     }
