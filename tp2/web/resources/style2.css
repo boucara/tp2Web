@@ -239,3 +239,12 @@ and open the template in the editor.
         margin-top : 1em;  
     }  
 
+    .div_connexion {
+        position:absolute;
+        top:0;
+        right:0;
+    }
+    
+    body {
+        background-image: url("resources/img.jpg");
+    }

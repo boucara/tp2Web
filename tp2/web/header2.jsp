@@ -6,16 +6,19 @@
     <a href="${pageContext.request.contextPath}">  
         <img src="${pageContext.request.contextPath}/resources/logo.jpg"/>  
     </a>  
-    <c:if test="${requestScope['user'] != null}">
-        Bonjour ${requestScope['user'].firstname} <a href="ServletUsers?action=deconnexion">Deconnexion</a>
-    </c:if>
-    <c:if test="${requestScope['user'] == null}">
-        <form action="ServletUsers" method="post">   
-            Login : <input type="text" name="login"/><br>
-            MDP : <input type="password" name="mdp"/><br>
-            <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
-            <input type="hidden" name="action" value="seConnecter"/> 
-            <input type="submit" value="Se Connecter" name="submit"/>  
-        </form>
-    </c:if>
+    <div class="div_connexion">
+        <c:if test="${requestScope['user'] != null}">
+            Bonjour ${requestScope['user'].firstname} <a href="ServletUsers?action=deconnexion">Deconnexion</a>
+        </c:if>
+        <c:if test="${requestScope['user'] == null}">
+            <form action="ServletUsers" method="post" class="form-inline">   
+                <div class="form-group"><label>Login :</label> <input type="text" name="login" class="form-control"/><br></div>
+                <div class="form-group"><label>MDP :</label> <input type="password" name="mdp" class="form-control"/><br></div>
+                <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
+                <input type="hidden" name="action" value="seConnecter"/> 
+                <input type="submit" value="Se Connecter" name="submit"/>  
+            </form>
+        </c:if>
+    </div>
+    
 </div> 

@@ -101,5 +101,3 @@
                 <a href="ServletUsers?action=listerLesUtilisateurs&pagination=${i*10}">${i}</a>
              </c:forEach>
         </c:if>  
-    </body>  
-</html>  
