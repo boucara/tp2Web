@@ -42,7 +42,7 @@ public class ServletUsers extends HttpServlet {
         // Pratique pour décider de l'action à faire  
         String action = request.getParameter("action");  
         String forwardTo = "pagejsp.jsp";  
-        String message = "pas compris";
+        String message = "en attente d'une action";
         int pagination = 0;
         if(request.getParameter("pagination") != null)
         {
@@ -70,7 +70,7 @@ public class ServletUsers extends HttpServlet {
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";
                 message="utilisateur ajouter";
             }
-            else if(action.equals("rechercherUtilisateur") && request.getSession().getAttribute("user") != null){
+            else if(action.equals("rechercherUtilisateur") && request.getSession().getAttribute("user") != null && request.getParameter("post") != null){
                Collection<Utilisateur> utilisateurs= gestionnaireUtilisateurs.rechercherUtilisateurs(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"));
                request.setAttribute("listeDesUsers", utilisateurs); 
                int numberUsers = utilisateurs.size();
@@ -86,13 +86,13 @@ public class ServletUsers extends HttpServlet {
                     message = "aucun utilisateur ne correspond à votre recherche"; 
                 }
             }
-            else if(action.equals("updateUtilisateur") && request.getSession().getAttribute("user") != null){
+            else if(action.equals("updateUtilisateur") && request.getSession().getAttribute("user") != null&& request.getParameter("login") != null && !request.getParameter("login").isEmpty()){
                 String mdp = request.getParameter("mdp");
                 gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";
                 message="utilisateur modifier";
             }
-          else if(action.equals("deleteUtilisateur") && request.getSession().getAttribute("user") != null){
+          else if(action.equals("deleteUtilisateur") && request.getSession().getAttribute("user") != null&& request.getParameter("login") != null && !request.getParameter("login").isEmpty()){
                 String mdp = request.getParameter("mdp");
                 gestionnaireUtilisateurs.delete(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";
@@ -117,6 +117,8 @@ public class ServletUsers extends HttpServlet {
                 request.getSession().removeAttribute("user");
                 message = "Deconnexion de l'utilisateur";
                 forwardTo = "pagejsp.jsp?action=deconnexion";
+            }else if (request.getSession().getAttribute("user") != null) {
+                forwardTo = "pagejsp.jsp?action="+action;
             }
             else {  
                 forwardTo = "pagejsp.jsp?action="+action;  
