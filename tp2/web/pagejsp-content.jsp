@@ -32,6 +32,7 @@
                 Nom : <input type="text" name="nom"/><br>  
                 Prénom : <input type="text" name="prenom"/><br>  
                 Login : <input type="text" name="login"/><br>  
+                MDP : <input type="password" name="mdp"/><br>
                 <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
                 <input type="hidden" name="action" value="ajouterUtilisateur"/>  
                 <input type="submit" value="Créer l'utilisateur" name="submit" onclick="ajouterUtilisateur()"/>  
@@ -57,6 +58,7 @@
             <li>Modifier les détails d'un utilisateur :</li>  
             <form action="ServletUsers" method="get">  
                 Login : <input type="text" name="login"/><br>  
+                MDP : <input type="password" name="mdp"/><br>
                 Nom : <input type="text" name="nom"/><br>  
                 Prénom : <input type="text" name="prenom"/><br>  
                 <input type="hidden" name="action" value="updateUtilisateur"/>  

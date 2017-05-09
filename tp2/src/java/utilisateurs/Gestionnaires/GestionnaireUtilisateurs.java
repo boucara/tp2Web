@@ -65,8 +65,8 @@ public class GestionnaireUtilisateurs {
         em.persist(u);  
         return u;  
     } 
-    public void ajouterUtilisateur(String nom, String prenom, String login){
-        Utilisateur u = creeUtilisateur(nom,  prenom,  login, "test");
+    public void ajouterUtilisateur(String nom, String prenom, String login, String mdp){
+        Utilisateur u = creeUtilisateur(nom,  prenom,  login, mdp);
         //Collection<Utilisateur> listeUtilisateurs = getAllUsers();
         //listeUtilisateurs.add(u);
     }
@@ -93,12 +93,12 @@ public class GestionnaireUtilisateurs {
          return q.getResultList(); 
           
      }
-    public void modifUtilisateur(String nom, String prenom, String login){
+    public void modifUtilisateur(String nom, String prenom, String login, String mdp){
          //for(Utilisateur ut : getAllUsers()){
            //if(ut.getLastname().equalsIgnoreCase(nom) || ut.getFirstname().equalsIgnoreCase(prenom) || ut.getLogin().equalsIgnoreCase(login)){
             Query q= em.createQuery("update  Utilisateur ut"
-                    +" set ut.getLastname()=nom,ut.getFirstname()=prenom,ut.getLogin()=login where"
-                    +"ut.getLasrname()=nom OR ut.getFirstname=prenom OR ut.getLogin=login"); 
+                    +" set ut.getLastname()=nom,ut.getFirstname()=prenom,ut.getLogin()=login, ut.getMdp()=mdp where"
+                    +"ut.getLogin=login"); 
             int numUpdates = q.executeUpdate();
     }
   

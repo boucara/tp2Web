@@ -49,14 +49,14 @@ public class ServletUsers extends HttpServlet {
             pagination = Integer.parseInt(request.getParameter("pagination"));
         }
         if (action != null) {  
-            if (action.equals("listerLesUtilisateurs")) {  
+            if (action.equals("listerLesUtilisateurs") && request.getSession().getAttribute("user") != null) {  
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.getPaginatedUsers(pagination);
                 int numberUsers = gestionnaireUtilisateurs.getNumberUsers();
                 request.setAttribute("listeDesUsers", liste);  
                 request.setAttribute("nombreUsers", numberUsers);
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";  
                 message = "Liste des utilisateurs";  
-            } else if (action.equals("creerUtilisateursDeTest")) {  
+            } else if (action.equals("creerUtilisateursDeTest") && request.getSession().getAttribute("user") != null) {  
                 gestionnaireUtilisateurs.creerUtilisateursDeTest();  
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.getPaginatedUsers(pagination);  
                 int numberUsers = gestionnaireUtilisateurs.getNumberUsers();
@@ -65,11 +65,12 @@ public class ServletUsers extends HttpServlet {
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";  
                 message = "Liste des utilisateurs";  
             } else if(action.equals("ajouterUtilisateur")){
-                gestionnaireUtilisateurs.ajouterUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"));
+                String mdp = request.getParameter("mdp");
+                gestionnaireUtilisateurs.ajouterUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
                 forwardTo = "pagejsp.jsp?";
                 message="utilisateur ajouter";
             }
-            else if(action.equals("rechercherUtilisateur")){
+            else if(action.equals("rechercherUtilisateur") && request.getSession().getAttribute("user") != null){
                Collection<Utilisateur> utilisateurs= gestionnaireUtilisateurs.rechercherUtilisateurs(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"));
                request.setAttribute("listeDesUsers", utilisateurs); 
                int numberUsers = utilisateurs.size();
@@ -85,8 +86,9 @@ public class ServletUsers extends HttpServlet {
                     message = "aucun utilisateur ne correspond à votre recherche"; 
                 }
             }
-            else if(action.equals("updateUtilisateur")){
-                gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"));
+            else if(action.equals("updateUtilisateur") && request.getSession().getAttribute("user") != null){
+                String mdp = request.getParameter("mdp");
+                gestionnaireUtilisateurs.modifUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
                 forwardTo = "pagejsp.jsp?";
                 message="utilisateur modifier";
             }else if (action.equals("seConnecter")) {
@@ -109,8 +111,8 @@ public class ServletUsers extends HttpServlet {
                 forwardTo = "pagejsp.jsp?action=deconnexion";
             }
             else {  
-                forwardTo = "pagejsp.jsp?action=todo";  
-                message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
+                forwardTo = "pagejsp.jsp?action=seconnecter";  
+                message = "Il faut se connecter pour accéder à certaines fonctionnalités !";  
             }  
         }  
         if(request.getSession().getAttribute("user") != null)
