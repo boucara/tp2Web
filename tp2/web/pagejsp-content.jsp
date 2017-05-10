@@ -62,6 +62,7 @@
                 <div class="form-group"><label class="control-label col-sm-2">Prénom :</label><div class="col-sm-10"> <input type="text" name="prenom"/></div></div><br>  
                 <div class="form-group"><label class="control-label col-sm-2">Login :</label><div class="col-sm-10"> <input type="text" name="login"/></div></div><br>  
                 <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
+                <input type="hidden" name="post" value="sendRequest"/>
                 <input type="submit" value="rechercher l'utilisateur" name="submit" class="btn btn-default" />  
 
               </form> 
@@ -83,7 +84,7 @@
                 <div class="form-group"><label class="control-label col-sm-2">MDP : </label><div class="col-sm-10"><input type="password" name="mdp"/></div></div><br>
                 <div class="form-group"><label class="control-label col-sm-2">Nom : </label><div class="col-sm-10"><input type="text" name="nom"/></div></div><br>  
                 <div class="form-group"><label class="control-label col-sm-2">Prénom : </label><div class="col-sm-10"><input type="text" name="prenom"/></div></div><br>
-                <input type="hidden" name="post" value="sendRequest"/>
+                
                 <input type="hidden" name="action" value="updateUtilisateur"/>  
                 <input type="submit" value="Mettre à jour" name="submit" class="btn btn-default"/>  
             </form>
