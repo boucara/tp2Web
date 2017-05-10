@@ -198,7 +198,7 @@ and open the template in the editor.
         bottom: 0;
         right: 0;
         left: 0;
-        position: fixed;
+        position: relative;
         height: 15%;
     }  
        
@@ -276,6 +276,7 @@ and open the template in the editor.
         width: 80%;
         right: 0;
         height: auto;
-        position: absolute;
-        padding-left: 10px;
+        position: relative;
+        padding-left: 15px;
+        margin-left: 20%;
     }

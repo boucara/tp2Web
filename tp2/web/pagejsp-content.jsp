@@ -106,7 +106,7 @@
         <c:if test="${param['action'] == 'listerLesUtilisateurs'}" >  
             <h2>Liste des utilisateurs</h2>  
   
-            <table border="10" class="table-condensed">  
+            <table border="10" class="table">  
                 <!-- La ligne de titre du tableau des comptes -->  
                 <thead>
                 <tr>  
@@ -126,13 +126,14 @@
                         <td>${u.firstname}</td>  
                         <td>${u.lastname}</td>  
                         <!-- On compte le nombre de users -->  
-                        <c:set var="total" value="${total+1}"/>  
+                         
                     </tr>  
+                    <c:set var="total" value="${total+1}"/> 
                 </c:forEach> 
                 </tbody>
   
                 <!-- Affichage du solde total dans la dernière ligne du tableau -->  
-                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreUsers']}</b></td><td></td></tr>  
+                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreUsers']}</b></td></tr>  
             </table>  
             <ul class="pagination">
             <c:forEach var="i" begin="0" end="${requestScope['nombreUsers']/10}">
