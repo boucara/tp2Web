@@ -72,7 +72,8 @@
             <h3>Afficher les détails d'un utilisateur</h3>  
             <form action="ServletUsers" method="get" class="form-horizontal">  
                 <div class="form-group"><label class="control-label col-sm-2">login :</label><div class="col-sm-10"> <input type="text" name="login"/></div></div><br>  
-                <input type="hidden" name="action" value="chercherParLogin"/>  
+                <input type="hidden" name="action" value="detailUtilisateur"/> 
+                <input type="hidden" name="post" value="sendRequest"/>
                 <input type="submit" value="Chercher" name="submit" class="btn btn-default"/>  
             </form>
             </c:if> 

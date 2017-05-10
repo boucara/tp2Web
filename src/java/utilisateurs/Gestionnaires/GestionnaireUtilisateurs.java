@@ -146,6 +146,16 @@ public class GestionnaireUtilisateurs {
             return null;
         }
     }
+    
+    public Collection<Utilisateur> getUser(String login) {
+        Query q = em.createQuery("select u from Utilisateur u where u.login='"+login+"'");
+        if(!q.getResultList().isEmpty()) {
+            return q.getResultList();
+        }
+        else {
+            return null;
+        }
+    }
     // Add business logic below. (Right-click in editor and choose  
     // "Insert Code > Add Business Method")  
 }  
