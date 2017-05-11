@@ -108,10 +108,10 @@
                         <td>${u.firstname}</td>  
                         <td>${u.lastname}</td>
                         <c:if test="${u.adresses.size()<=1}">
-                            <td><a href="#">${u.adresses.size()} adresse</a></td>
+                            <td><a href="ServletAdresses?action=listerLesAdresses&pagination=0&loginUser=${u.login}">${u.adresses.size()} adresse</a></td>
                         </c:if>
                         <c:if test="${u.adresses.size()>1}">
-                            <td><a href="#">${u.adresses.size()} adresses</a></td>
+                            <td><a href="ServletAdresses?action=listerLesAdresses&pagination=0&loginUser=${u.login}">${u.adresses.size()} adresses</a></td>
                         </c:if>
                         
                         <!-- On compte le nombre de users -->  

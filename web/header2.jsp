@@ -39,6 +39,7 @@
             </div>
         </div>
             
-        <div class="right">
+        
     
 </div> 
+<div class="right">
