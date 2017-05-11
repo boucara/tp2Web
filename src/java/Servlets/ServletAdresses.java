@@ -61,6 +61,8 @@ public class ServletAdresses extends HttpServlet {
                 forwardTo = "adresse.jsp?action=listerLesAdresses";  
                 message = "Liste des adresses de l'utilisateur " + loginUser;  
             }  else if(action.equals("ajouterAdresses") && user != null){
+                
+                
                 Collection<Adresse> liste = gestionnaireUtilisateurs.getAdresses(loginUser, pagination);
                 int numberAdresses = gestionnaireUtilisateurs.getNbAdresses(loginUser);
                 System.out.println(numberAdresses);
@@ -68,9 +70,11 @@ public class ServletAdresses extends HttpServlet {
                 request.setAttribute("listeAdresses", liste);  
                 request.setAttribute("nombreAdresses", numberAdresses);
                 forwardTo = "adresse.jsp?action=listerLesAdresses";
-                message="utilisateur ajouter";
+                message="Fonctionnalité non implémenter";
             }
             else if(action.equals("updateAdresses") && user != null){
+                
+                
                 Collection<Adresse> liste = gestionnaireUtilisateurs.getAdresses(loginUser, pagination);
                 int numberAdresses = gestionnaireUtilisateurs.getNbAdresses(loginUser);
                 System.out.println(numberAdresses);
@@ -78,9 +82,11 @@ public class ServletAdresses extends HttpServlet {
                 request.setAttribute("listeAdresses", liste);  
                 request.setAttribute("nombreAdresses", numberAdresses);
                 forwardTo = "adresse.jsp?action=listerLesAdresses";
-                message="utilisateur modifier";
+                message="Fonctionnalité non implémenter";
             }
             else if(action.equals("deleteAdresses") && user != null){
+                
+                
                 Collection<Adresse> liste = gestionnaireUtilisateurs.getAdresses(loginUser, pagination);
                 int numberAdresses = gestionnaireUtilisateurs.getNbAdresses(loginUser);
                 System.out.println(numberAdresses);
@@ -88,7 +94,7 @@ public class ServletAdresses extends HttpServlet {
                 request.setAttribute("listeAdresses", liste);  
                 request.setAttribute("nombreAdresses", numberAdresses);
                 forwardTo = "adresse.jsp?action=listerLesAdresses";
-                message="utilisateur supprimer";
+                message="Fonctionnalité non implémenter";
             }    
             else if (user != null) {
                 forwardTo = "adresse.jsp?action="+action;
