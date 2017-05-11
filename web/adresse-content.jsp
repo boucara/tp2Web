@@ -20,12 +20,12 @@
                 
         <c:if test="${requestScope['user'] != null}">  
   
-        <!-- Zone qui affiche les utilisateurs si le paramètre action vaut listerComptes -->  
+        <!-- Zone qui affiche les adresses si le paramètre action vaut listerLesAdresses -->  
         <c:if test="${param['action'] == 'listerLesAdresses'}" >  
             <h2>Liste des utilisateurs</h2>  
   
             <table border="10" class="table">  
-                <!-- La ligne de titre du tableau des comptes -->  
+                <!-- La ligne de titre du tableau des adresses -->  
                 <thead>
                 <tr>  
                     <td><b>Rue</b></td>  
@@ -35,21 +35,22 @@
                 </tr>  
                 </thead>
   
-                <!-- Ici on affiche les lignes, une par utilisateur -->  
+                <!-- Ici on affiche les lignes, une par adresse -->  
                 <!-- cette variable montre comment on peut utiliser JSTL et EL pour calculer -->  
                 <c:set var="total" value="0"/>  
                 <tbody>
                 <c:forEach var="a" items="${requestScope['listeAdresses']}">  
+                     <c:if test="${a != null}"> 
                     <tr>  
                         <td>${a.numeroEtRue}</td>  
                         <td>${a.codePostal}</td>  
                         <td>${a.ville}</td>
                         <td>${a.pays}</td>
-                        
-                        <!-- On compte le nombre de users -->  
+                         <c:set var="total" value="${total+1}"/>
+                        <!-- On compte le nombre d'adresses -->  
                          
                     </tr>  
-                    <c:set var="total" value="${total+1}"/> 
+                    </c:if> 
                 </c:forEach> 
                 </tbody>
   

@@ -175,6 +175,12 @@ public class GestionnaireUtilisateurs {
     
     public int getNbAdresses(String loginUser) {
         Query q = em.createQuery("select u.adresses from Utilisateur u where u.login='"+loginUser+"'");
-        return q.getResultList().size();
+        if(!q.getResultList().contains(null)) {
+            System.out.println(q.getResultList());
+            return q.getResultList().size();
+        }
+        else {
+            return 0;
+        }
     }
 }  

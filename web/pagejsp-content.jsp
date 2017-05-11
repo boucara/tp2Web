@@ -113,11 +113,11 @@
                         <c:if test="${u.adresses.size()>1}">
                             <td><a href="ServletAdresses?action=listerLesAdresses&pagination=0&loginUser=${u.login}">${u.adresses.size()} adresses</a></td>
                         </c:if>
-                        
+                        <c:set var="total" value="${total+1}"/> 
                         <!-- On compte le nombre de users -->  
                          
                     </tr>  
-                    <c:set var="total" value="${total+1}"/> 
+                    
                 </c:forEach> 
                 </tbody>
   
