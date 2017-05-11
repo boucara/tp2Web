@@ -39,7 +39,7 @@
                 <!-- cette variable montre comment on peut utiliser JSTL et EL pour calculer -->  
                 <c:set var="total" value="0"/>  
                 <tbody>
-                <c:forEach var="a" items="${requestScope['listeDesAdresses']}">  
+                <c:forEach var="a" items="${requestScope['listeAdresses']}">  
                     <tr>  
                         <td>${a.numeroEtRue}</td>  
                         <td>${a.codePostal}</td>  
@@ -54,10 +54,10 @@
                 </tbody>
   
                 <!-- Affichage du solde total dans la dernière ligne du tableau -->  
-                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreUsers']}</b></td></tr>  
+                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreAdresses']}</b></td></tr>  
             </table>  
             <ul class="pagination">
-            <c:forEach var="i" begin="0" end="${requestScope['nombreUsers']/10}">
+            <c:forEach var="i" begin="0" end="${requestScope['nombreAdresses']/10}">
                 <li><a href="ServletAdresses?action=listerLesAdresses&pagination=${i*10}&loginUser=${requestScope['loginUser']}">${i}</a></li>
             </c:forEach>
             </ul>

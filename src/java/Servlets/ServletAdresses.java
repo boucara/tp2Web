@@ -44,6 +44,7 @@ public class ServletAdresses extends HttpServlet {
         String message = "en attente d'une action";
         int pagination = 0;
         String loginUser = request.getParameter("loginUser");
+        request.setAttribute("loginAdresses", loginUser);  
         Utilisateur user = (Utilisateur)request.getSession().getAttribute("user");
         if(request.getParameter("pagination") != null)
         {
@@ -52,7 +53,7 @@ public class ServletAdresses extends HttpServlet {
         if (action != null) {  
             if (action.equals("listerLesAdresses") && user != null) {  
                 Collection<Adresse> liste = gestionnaireUtilisateurs.getAdresses(loginUser, pagination);
-                int numberAdresses = gestionnaireUtilisateurs.getNumberUsers();
+                int numberAdresses = gestionnaireUtilisateurs.getNbAdresses(loginUser);
                 request.setAttribute("listeAdresses", liste);  
                 request.setAttribute("nombreAdresses", numberAdresses);
                 forwardTo = "adresse.jsp?action=listerLesAdresses";  

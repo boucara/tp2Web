@@ -172,4 +172,9 @@ public class GestionnaireUtilisateurs {
             return null;
         }
     }
+    
+    public int getNbAdresses(String loginUser) {
+        Query q = em.createQuery("select u.adresses from Utilisateur u where u.login='"+loginUser+"'");
+        return q.getResultList().size();
+    }
 }  

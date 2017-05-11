@@ -127,6 +127,7 @@ public class ServletUsers extends HttpServlet {
                 {
                     request.getSession().setAttribute("user", user2);
                     message = "Utilisateur connecté";
+                    user = user2;
                 }
                 else
                 {
@@ -135,6 +136,7 @@ public class ServletUsers extends HttpServlet {
                 forwardTo = "pagejsp.jsp?action=connexion";
             } else if (action.equals("deconnexion")) {
                 request.getSession().removeAttribute("user");
+                user = null;
                 message = "Deconnexion de l'utilisateur";
                 forwardTo = "pagejsp.jsp?action=deconnexion";
             }else if (request.getSession().getAttribute("user") != null) {
