@@ -94,10 +94,7 @@
             <c:if test="${param['action'] == 'deleteUtilisateur'}">
             <h3>Supprimer un utilisateur :</h3>  
             <form action="ServletUsers" method="get" class="form-horizontal">  
-                <div class="form-group"><label class="control-label col-sm-2">Login :</label><div class="col-sm-10"> <input type="text" name="login"/></div></div><br>  
-                <div class="form-group"><label class="control-label col-sm-2">MDP : </label><div class="col-sm-10"><input type="password" name="mdp"/></div></div><br>
-                <div class="form-group"><label class="control-label col-sm-2">Nom : </label><div class="col-sm-10"><input type="text" name="nom"/></div></div><br>  
-                <div class="form-group"><label class="control-label col-sm-2">Prénom :</label><div class="col-sm-10"> <input type="text" name="prenom"/></div></div><br>  
+                <div class="form-group"><label class="control-label col-sm-2">Login :</label><div class="col-sm-10"> <input type="text" name="login"/></div></div><br>    
                 <input type="hidden" name="action" value="deleteUtilisateur"/>  
                 <input type="submit" value="supprimer" name="submit" class="btn btn-default"/>  
             </form>
