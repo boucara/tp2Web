@@ -1,3 +1,4 @@
+</div>
 <div id="footer">  
     <ul class="bottom">  
         <li><a href="http://miage.unice.fr/">Miage HOME</a> |  

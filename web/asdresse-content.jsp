@@ -1,7 +1,7 @@
 <%-- 
-    Document   : pagejsp
-    Created on : 4 avr. 2017, 15:20:04
-    Author     : Aicha
+    Document   : asdresse-content
+    Created on : 11 mai 2017, 21:05:37
+    Author     : Tom
 --%>
 
 
@@ -9,6 +9,7 @@
   
 <!-- Ne pas oublier cette ligne sinon tous les tags de la JSTL seront ignorés ! -->  
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+            
                         
             <c:if test="${requestScope['user'] == null}">
             <h2>Liste des fonctionnalités à implémenter dans la Servlet (note : après chaque action cette page sera  
@@ -131,7 +132,9 @@
             </ul>
             </c:if>  
         </c:if>
+        </div>
             
         
   
         
+

@@ -6,10 +6,15 @@
 package utilisateurs.modeles;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,6 +23,7 @@ import javax.persistence.Id;
 @Entity
 public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -25,6 +31,17 @@ public class Utilisateur implements Serializable {
     private String lastname;  
     private String login;  
     private String mdp;
+    
+    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+    private List<Adresse> adresses;
+
+    public List<Adresse> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(List<Adresse> adresses) {
+        this.adresses = adresses;
+    }
 
     public String getMdp() {
         return mdp;
@@ -52,11 +69,12 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {  
     }  
   
-    public Utilisateur(final String lastname, final String firstname, final String login, String mdp) {  
+    public Utilisateur(final String lastname, final String firstname, final String login, String mdp, ArrayList<Adresse> adresses) {  
         this.login = login;  
         this.lastname = lastname;  
         this.firstname = firstname;  
         this.mdp = mdp;
+        this.adresses = adresses;
     }  
   
     public String getFirstname() {  

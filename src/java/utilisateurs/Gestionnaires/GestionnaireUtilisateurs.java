@@ -5,11 +5,13 @@
  */
 package utilisateurs.Gestionnaires;
 
+import java.util.ArrayList;
 import java.util.Collection;  
 import javax.ejb.Stateless;  
 import javax.persistence.EntityManager;  
 import javax.persistence.PersistenceContext;  
 import javax.persistence.Query;  
+import utilisateurs.modeles.Adresse;
 import utilisateurs.modeles.Utilisateur; 
 
 /**
@@ -24,53 +26,56 @@ public class GestionnaireUtilisateurs {
     private EntityManager em;  
   
     public void creerUtilisateursDeTest() {  
-        creeUtilisateur("John", "Lennon", "jlennon", "test");
-        creeUtilisateur("Paul", "Mac Cartney", "pmc", "test");
-        creeUtilisateur("Ringo", "Starr", "rstarr", "test");
-        creeUtilisateur("Georges", "Harisson", "georgesH", "test");
-        creeUtilisateur("Rivera", "Garth", "RiveraGarth", "test");
-        creeUtilisateur("Joyce", "Amery", "JoyceAmery", "test");
-        creeUtilisateur("Saunders", "Micah", "SaundersMicah", "test");
-        creeUtilisateur("Mccarty", "Fritz", "MccartyFritz", "test");
-        creeUtilisateur("Blake", "Perry", "BlakePerry", "test");
-        creeUtilisateur("Jenkins", "Maxwell", "JenkinsMaxwell", "test");
-        creeUtilisateur("Burch", "Geoffrey", "BurchGeoffrey", "test");
-        creeUtilisateur("Roberson", "Lane", "RobersonLane", "test");
-        creeUtilisateur("Carey", "Baxter", "CareyBaxter", "test");
-        creeUtilisateur("Bishop", "Samson", "BishopSamson", "test");
-        creeUtilisateur("Carver", "Odysseus", "CarverOdysseus", "test");
-        creeUtilisateur("Daniel", "Blaze", "DanielBlaze", "test");
-        creeUtilisateur("Barlow", "Isaiah", "BarlowIsaiah", "test");
-        creeUtilisateur("Landry", "Raymond", "LandryRaymond", "test");
-        creeUtilisateur("Bruce", "Gray", "BruceGray", "test");
-        creeUtilisateur("Bryant", "Merrill", "BryantMerrill", "test");
-        creeUtilisateur("Little", "Grant", "LittleGrant", "test");
-        creeUtilisateur("Glass", "Judah", "GlassJudah", "test");
-        creeUtilisateur("Rodgers", "Bevis", "RodgersBevis", "test");
-        creeUtilisateur("Love", "Channing", "LoveChanning", "test");
-        creeUtilisateur("Walters", "Flynn", "WaltersFlynn", "test");
-        creeUtilisateur("Mitchell", "Gareth", "MitchellGareth", "test");
-        creeUtilisateur("Hale", "Ronan", "HaleRonan", "test");
-        creeUtilisateur("Griffith", "Cameron", "GriffithCameron", "test");
-        creeUtilisateur("Little", "Thomas", "LittleThomas", "test");
-        creeUtilisateur("Valenzuela", "Leroy", "ValenzuelaLeroy", "test");
-        creeUtilisateur("Glass", "Hakeem", "GlassHakeem", "test");
-        creeUtilisateur("Morales", "Keith", "MoralesKeith", "test");
-        creeUtilisateur("Bradford", "Mohammad", "BradfordMohammad", "test");
-        creeUtilisateur("Ellison", "Vaughan", "EllisonVaughan", "test");  
+        ArrayList<Adresse> adresses = new ArrayList<Adresse>();
+        adresses.add(new Adresse("Rue des templiers", "06510", "Sophia", "France"));
+        creeUtilisateur("John", "Lennon", "jlennon", "test", adresses);
+        creeUtilisateur("Paul", "Mac Cartney", "pmc", "test", adresses);
+        creeUtilisateur("Ringo", "Starr", "rstarr", "test", adresses);
+        creeUtilisateur("Georges", "Harisson", "georgesH", "test", adresses);
+        creeUtilisateur("Rivera", "Garth", "RiveraGarth", "test", adresses);
+        creeUtilisateur("Joyce", "Amery", "JoyceAmery", "test", adresses);
+        creeUtilisateur("Saunders", "Micah", "SaundersMicah", "test", adresses);
+        creeUtilisateur("Mccarty", "Fritz", "MccartyFritz", "test", adresses);
+        creeUtilisateur("Blake", "Perry", "BlakePerry", "test", adresses);
+        creeUtilisateur("Jenkins", "Maxwell", "JenkinsMaxwell", "test", adresses);
+        creeUtilisateur("Burch", "Geoffrey", "BurchGeoffrey", "test", adresses);
+        creeUtilisateur("Roberson", "Lane", "RobersonLane", "test", adresses);
+        creeUtilisateur("Carey", "Baxter", "CareyBaxter", "test", adresses);
+        creeUtilisateur("Bishop", "Samson", "BishopSamson", "test", adresses);
+        creeUtilisateur("Carver", "Odysseus", "CarverOdysseus", "test", adresses);
+        creeUtilisateur("Daniel", "Blaze", "DanielBlaze", "test", adresses);
+        creeUtilisateur("Barlow", "Isaiah", "BarlowIsaiah", "test", adresses);
+        creeUtilisateur("Landry", "Raymond", "LandryRaymond", "test", adresses);
+        creeUtilisateur("Bruce", "Gray", "BruceGray", "test", adresses);
+        creeUtilisateur("Bryant", "Merrill", "BryantMerrill", "test", adresses);
+        creeUtilisateur("Little", "Grant", "LittleGrant", "test", adresses);
+        creeUtilisateur("Glass", "Judah", "GlassJudah", "test", adresses);
+        creeUtilisateur("Rodgers", "Bevis", "RodgersBevis", "test", adresses);
+        creeUtilisateur("Love", "Channing", "LoveChanning", "test", adresses);
+        creeUtilisateur("Walters", "Flynn", "WaltersFlynn", "test", adresses);
+        creeUtilisateur("Mitchell", "Gareth", "MitchellGareth", "test", adresses);
+        creeUtilisateur("Hale", "Ronan", "HaleRonan", "test", adresses);
+        creeUtilisateur("Griffith", "Cameron", "GriffithCameron", "test", adresses);
+        creeUtilisateur("Little", "Thomas", "LittleThomas", "test", adresses);
+        creeUtilisateur("Valenzuela", "Leroy", "ValenzuelaLeroy", "test", adresses);
+        creeUtilisateur("Glass", "Hakeem", "GlassHakeem", "test", adresses);
+        creeUtilisateur("Morales", "Keith", "MoralesKeith", "test", adresses);
+        creeUtilisateur("Bradford", "Mohammad", "BradfordMohammad", "test", adresses);
+        creeUtilisateur("Ellison", "Vaughan", "EllisonVaughan", "test", adresses);  
     }  
   
-    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String mdp) {  
-        Utilisateur u = new Utilisateur(nom, prenom, login, mdp);  
+    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String mdp, ArrayList<Adresse> adresses) {  
+        Utilisateur u = new Utilisateur(nom, prenom, login, mdp, adresses);  
         em.persist(u);  
         return u;  
     } 
     public void ajouterUtilisateur(String nom, String prenom, String login, String mdp){
-        Utilisateur u = creeUtilisateur(nom,  prenom,  login, mdp);
+        ArrayList<Adresse> adresses = new ArrayList<Adresse>();
+        Utilisateur u = creeUtilisateur(nom,  prenom,  login, mdp, adresses);
         //Collection<Utilisateur> listeUtilisateurs = getAllUsers();
         //listeUtilisateurs.add(u);
     }
-     public  Collection<Utilisateur> rechercherUtilisateurs(String nom, String prenom, String login){
+    public Collection<Utilisateur> rechercherUtilisateurs(String nom, String prenom, String login) {
          String where = "";
          if (nom != "") {
              where = where + "u.lastname like '%"+nom+"%'";
@@ -92,7 +97,7 @@ public class GestionnaireUtilisateurs {
           
          return q.getResultList(); 
           
-     }
+    }
     public void modifUtilisateur(String nom, String prenom, String login, String mdp){
          //for(Utilisateur ut : getAllUsers()){
          // if(ut.getLastname().equalsIgnoreCase(nom) || ut.getFirstname().equalsIgnoreCase(prenom) || ut.getLogin().equalsIgnoreCase(login)){
@@ -155,4 +160,16 @@ public class GestionnaireUtilisateurs {
     }
     // Add business logic below. (Right-click in editor and choose  
     // "Insert Code > Add Business Method")  
+
+    public Collection<Adresse> getAdresses(String loginUser, int pagination) {
+        Query q = em.createQuery("select u.adresses from Utilisateur u where u.login='"+loginUser+"'");
+        q.setFirstResult(pagination);
+        q.setMaxResults(10);
+        if(!q.getResultList().isEmpty()) {
+            return q.getResultList();
+        }
+        else {
+            return null;
+        }
+    }
 }  
