@@ -64,14 +64,18 @@ public class GestionnaireUtilisateurs {
         creeUtilisateur("Ellison", "Vaughan", "EllisonVaughan", "test", adresses);  
     }  
   
-    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String mdp, ArrayList<Adresse> adresses) {  
+    public Utilisateur creeUtilisateur(String nom, String prenom, String login, String mdp, ArrayList<Adresse> adresses ) {  
+        
         Utilisateur u = new Utilisateur(nom, prenom, login, mdp, adresses);  
         em.persist(u);  
         return u;  
     } 
-    public void ajouterUtilisateur(String nom, String prenom, String login, String mdp){
-        ArrayList<Adresse> adresses = new ArrayList<Adresse>();
-        Utilisateur u = creeUtilisateur(nom,  prenom,  login, mdp, adresses);
+    public void ajouterUtilisateur(String nom, String prenom, String login, String mdp, String numeroEtRue, String codePostal , String ville,String pays){
+       ArrayList<Adresse> adresses = new ArrayList<Adresse>();
+       Adresse  adresse = new Adresse(numeroEtRue, codePostal, ville,  pays) ;
+       adresses.add(adresse);
+       Utilisateur u = creeUtilisateur(nom,  prenom,  login, mdp, adresses);
+        
         //Collection<Utilisateur> listeUtilisateurs = getAllUsers();
         //listeUtilisateurs.add(u);
     }

@@ -30,6 +30,10 @@
                 <div class="form-group"><label class="control-label col-sm-2">Prénom :</label><div class="col-sm-10"> <input type="text" name="prenom"/></div></div><br>  
                 <div class="form-group"><label class="control-label col-sm-2">Login :</label><div class="col-sm-10"> <input type="text" name="login"/></div></div><br>  
                 <div class="form-group"><label class="control-label col-sm-2">MDP :</label><div class="col-sm-10"> <input type="password" name="mdp"/></div></div><br>
+                <div class="form-group"><label class="control-label col-sm-2">numeroEtRue :</label><div class="col-sm-10"> <input type="text" name="numeroEtRue"/></div></div><br>
+                <div class="form-group"><label class="control-label col-sm-2">codePostal :</label><div class="col-sm-10"> <input type="text" name="codepostal"/></div></div><br>
+                <div class="form-group"><label class="control-label col-sm-2">ville :</label><div class="col-sm-10"> <input type="text" name="ville"/></div></div><br>
+                <div class="form-group"><label class="control-label col-sm-2">pays :</label><div class="col-sm-10"> <input type="text" name="pays"/></div></div><br>
                 <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
                 <input type="hidden" name="action" value="ajouterUtilisateur"/>  
                 <input type="submit" value="Créer l'utilisateur" name="submit" onclick="ajouterUtilisateur()" class="btn btn-default"/>  
