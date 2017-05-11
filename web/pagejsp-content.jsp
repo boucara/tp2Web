@@ -119,10 +119,11 @@
                     </tr>  
                     
                 </c:forEach> 
-                </tbody>
   
                 <!-- Affichage du solde total dans la dernière ligne du tableau -->  
-                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreUsers']}</b></td></tr>  
+                <tr><td><b>TOTAL</b></td><td></td><td></td><td><b>${total}/${requestScope['nombreUsers']}</b></td></tr>  
+                </tbody>
+
             </table>  
             <ul class="pagination">
             <c:forEach var="i" begin="0" end="${requestScope['nombreUsers']/10}">

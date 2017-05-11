@@ -139,7 +139,7 @@ public class ServletUsers extends HttpServlet {
                 user = null;
                 message = "Deconnexion de l'utilisateur";
                 forwardTo = "pagejsp.jsp?action=deconnexion";
-            }else if (request.getSession().getAttribute("user") != null) {
+            }else if (user != null) {
                 forwardTo = "pagejsp.jsp?action="+action;
             }
             else {  

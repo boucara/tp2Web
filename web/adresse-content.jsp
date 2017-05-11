@@ -32,6 +32,9 @@
                     <td><b>CP</b></td>  
                     <td><b>Ville</b></td>
                     <td><b>Pays</b></td>
+                    <td><b></b></td>
+                    <td><b></b></td>
+                    <td><b></b></td>
                 </tr>  
                 </thead>
   
@@ -41,21 +44,38 @@
                 <tbody>
                 <c:forEach var="a" items="${requestScope['listeAdresses']}">  
                      <c:if test="${a != null}"> 
-                    <tr>  
-                        <td>${a.numeroEtRue}</td>  
-                        <td>${a.codePostal}</td>  
-                        <td>${a.ville}</td>
-                        <td>${a.pays}</td>
+                    <tr>
+                     <form>
+                         <td><input type="text" name="numeroEtRue" value="${a.numeroEtRue}"/></td>  
+                        <td><input type="text" name="codePostal" value="${a.codePostal}"/></td>  
+                        <td><input type="text" name="ville"  value="${a.ville}"/></td>
+                        <td><input type="text" name="pays" value="${a.pays}"/></td>
+                        <input type="hidden" name="action" value="updateAdresse"/>
+                        <input type="hidden" name="loginUser" value="${requestScope['loginUser']}"/>
+                        <td><input type="submit" value="Mettre à jour" name="submit"/></td>
+                     </form>
+                        <td><a href="ServletAdresses?action=listerLesAdresses&pagination=${i*10}&loginUser=${requestScope['loginUser']}&idAdresse=${a.id}">Supprimer</a></td>
+                        <td></td>
                          <c:set var="total" value="${total+1}"/>
                         <!-- On compte le nombre d'adresses -->  
                          
                     </tr>  
                     </c:if> 
                 </c:forEach> 
-                </tbody>
+                    <tr><form><td><input type="text" name="numeroEtRue"/></td>  
+                        <td><input type="text" name="codePostal" /></td>  
+                        <td><input type="text" name="ville"  /></td>
+                        <td><input type="text" name="pays" /></td>
+                        <td></td>
+                        <td></td>
+                        <input type="hidden" name="action" value="ajouterAdresse"/>
+                        <input type="hidden" name="loginUser" value="${requestScope['loginUser']}"/>
+                        <td><input type="submit" value="ajouter" name="submit"/></td></form></tr>
+                
   
                 <!-- Affichage du solde total dans la dernière ligne du tableau -->  
-                <tr><td><b>TOTAL</b></td><td></td><td><b>${total}/${requestScope['nombreAdresses']}</b></td></tr>  
+                <tr><td><b>TOTAL</b></td><td></td><td></td><td></td><td></td><td></td><td><b>${total}/${requestScope['nombreAdresses']}</b></td></tr> 
+                </tbody>
             </table>  
             <ul class="pagination">
             <c:forEach var="i" begin="0" end="${requestScope['nombreAdresses']/10}">

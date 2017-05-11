@@ -72,7 +72,7 @@ public class ServletAdresses extends HttpServlet {
                 forwardTo = "adresse.jsp?action=listerLesUtilisateurs";
                 message="utilisateur supprimer";
             }    
-            else if (request.getSession().getAttribute("user") != null) {
+            else if (user != null) {
                 forwardTo = "adresse.jsp?action="+action;
             }
             else {  
