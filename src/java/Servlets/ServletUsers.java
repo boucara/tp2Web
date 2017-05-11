@@ -65,9 +65,10 @@ public class ServletUsers extends HttpServlet {
                 request.setAttribute("nombreUsers", numberUsers); 
                 forwardTo = "pagejsp.jsp?action=listerLesUtilisateurs";  
                 message = "Liste des utilisateurs";  
-            } else if(action.equals("ajouterUtilisateur") && request.getParameter("login") != null && !request.getParameter("login").isEmpty()){
+            } 
+            else if(action.equals("ajouterUtilisateur") && request.getParameter("login") != null && !request.getParameter("login").isEmpty()){
                 String mdp = request.getParameter("mdp");
-                gestionnaireUtilisateurs.ajouterUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp);
+                gestionnaireUtilisateurs.ajouterUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login"), mdp,request.getParameter("numeroEtRue"),request.getParameter("codepostal"),request.getParameter("ville"),request.getParameter("pays"));
                 Collection<Utilisateur> liste = gestionnaireUtilisateurs.getPaginatedUsers(pagination);
                 int numberUsers = gestionnaireUtilisateurs.getNumberUsers();
                 request.setAttribute("listeDesUsers", liste);  
